@@ -2,7 +2,7 @@
 
 Liberty WAR file that periodically writes statistics about the Liberty server to a CSV file (e.g. `logs/libertymon.csv`).
 
-There are [two versions of the WAR](https://github.com/IBM/libertymon/releases) depending on which features you want to enable in Liberty:
+There are [two versions of the WAR](https://github.com/IBM/libertymon/releases/latest) depending on which features you want to enable in Liberty:
 
 * [liberty-ejb.war](https://github.com/IBM/libertymon/tree/master/libertymon-ejb): Requires Liberty features ejbLite-3.2, jsp-2.3, and monitor-1.0.
 * [liberty-servlet.war](https://github.com/IBM/libertymon/tree/master/libertymon-servlet): Requires Liberty features jsp-2.3 and monitor-1.0; however, in addition, it also requires `<webContainer deferServletLoad="false" />`.

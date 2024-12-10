@@ -1,6 +1,6 @@
 # libertymon
 
-Liberty WAR file that periodically writes statistics about the Liberty server to a CSV file (e.g. `logs/libertymon.csv`).
+[OpenLiberty](https://openliberty.io/) or [WebSphere Liberty](https://www.ibm.com/products/cloud-pak-for-applications/liberty) installable WAR application that periodically writes statistics about the Liberty server to a CSV file (e.g. `logs/libertymon.csv`).
 
 There are [two versions of the WAR](https://github.com/IBM/libertymon/releases/latest) depending on which features you want to enable in Liberty:
 
@@ -24,3 +24,7 @@ Compile, package, and test all sub-projects:
 `mvn clean install`
 
 See each sub-project for detailed development.
+
+## Support
+
+Provided as-is and without any warranty or formal support; however, please report any [feedback or issues through the GitHub repository](https://github.com/IBM/libertymon/issues/new) and we'll try to respond as time permits.

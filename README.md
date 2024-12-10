@@ -27,4 +27,4 @@ See each sub-project for detailed development.
 
 ## Support
 
-Provided as-is and without any warranty or formal support; however, please report any [feedback or issues through the GitHub repository](/IBM/libertymon/issues/new) and we'll try to respond as time permits.
+Provided as-is and without any warranty or formal support; however, please report any [feedback or issues through the GitHub repository](https://github.com/IBM/libertymon/issues/new) and we'll try to respond as time permits.

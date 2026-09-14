@@ -18,9 +18,14 @@ package com.example.liberty.it;
 import static org.junit.Assert.*;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.apache.commons.httpclient.HttpClient;
-import org.apache.commons.httpclient.HttpStatus;
-import org.apache.commons.httpclient.methods.GetMethod;
+import org.apache.hc.client5.http.classic.methods.HttpGet;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
+import org.apache.hc.client5.http.impl.classic.HttpClients;
+import org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManager;
+import org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManagerBuilder;
+import org.apache.hc.core5.http.io.entity.EntityUtils;
+import org.apache.hc.core5.http.HttpStatus;
 
 public class EndpointIT {
     private static String URL;
@@ -32,20 +37,16 @@ public class EndpointIT {
 
     @Test
     public void testServlet() throws Exception {
-        HttpClient client = new HttpClient();
+        try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
+            try (CloseableHttpResponse httpResponse = httpClient.execute(new HttpGet(URL))) {
+                int statusCode = httpResponse.getCode();
 
-        GetMethod method = new GetMethod(URL);
+                assertEquals("HTTP GET failed", HttpStatus.SC_OK, statusCode);
 
-        try {
-            int statusCode = client.executeMethod(method);
+                String response = EntityUtils.toString(httpResponse.getEntity());
 
-            assertEquals("HTTP GET failed", HttpStatus.SC_OK, statusCode);
-
-            String response = method.getResponseBodyAsString(1000);
-
-            assertTrue("Unexpected response body", response.contains("Hello World"));
-        } finally {
-            method.releaseConnection();
-        }  
+                assertTrue("Unexpected response body", response.contains("Hello World"));
+            }
+        }
     }
 }
